@@ -1,0 +1,8 @@
+# Deep Learning Engine (CPU vrsion for stability on Linux box)
+paddlepaddle==3.1.1
+
+# The OCR Library
+paddleocr==3.4.1
+
+# Common helper for image processing
+opencv-python
