@@ -3,11 +3,15 @@ __pychache__/
 .venv/
 *.py[cod]
 
-# PaddleOCR Models & Data
+# PaddleOCR
 inference/
 ~/.paddleocr/
+
+# Ignore all data contents
 data/input/*
 data/output/*
+
+# Explicityly include .gitkeep files to keep the directories in version control
 !data/input/.gitkeep
 !data/output/.gitkeep
 
