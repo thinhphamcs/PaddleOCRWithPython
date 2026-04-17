@@ -1,36 +1,36 @@
 # PaddleOCR
-Learning and developing an Optical Character Recognition (OCR) system using PaddleOCR and Python
+A professional, learning-focused repository for Optical Character Recognition (OCR) using PaddleOCR and Python.
 
-## Python Commands
+This project demonstrates real-world software architecture patterns with clean separation of concerns, modular design, and a production-ready Streamlit interface. It supports **multiple fine-tuned models** for different document types (invoices, healthcare forms, bank statements, etc.).
+
+## Quick Start
 
 ```bash
+# Setup
 python3 -m venv .venv
-```
-
-```bash
 source .venv/bin/activate
-```
-
-```bash
 pip install -r requirements.txt
-```
 
-```bash
+# Run
 python src/main.py
 ```
 
-## Repository layout
+## Features
 
-```
-PaddleOCRWithPython/
-├── .venv/
-├── LICENSE                     # Apache 2.0
-├── README.md
-├── requirements.txt
-├── models/
-├── data/
-│   ├── input                   # Images to be scan
-│   └── output                  # Save resutls (JSON/TXT)
-└── src/
-    └── main.py
-```
+- **Multi-model support**: Load different models based on document type for better accuracy
+- **Professional architecture**: Clean separation between business logic and UI
+- **Streamlit interface**: Simple, intuitive web interface
+- **Extensible**: Easy to add new document types and models
+
+## Documentation
+
+- [Getting Started](docs/GETTING_STARTED.md) - Detailed setup and usage
+- [Architecture](docs/ARCHITECTURE.md) - Project structure and design
+- [Training](docs/TRAINING.md) - Fine-tuning models for custom document types
+
+## Supported Document Types
+
+- **Invoices**: Extract invoice numbers, dates, amounts, line items
+- **Healthcare Forms**: Extract patient information, diagnoses, treatment codes
+- **Bank Statements**: Extract account numbers, transactions, balances
+- **General**: Works with any document

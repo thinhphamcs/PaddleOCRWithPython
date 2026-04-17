@@ -10,10 +10,20 @@ inference/
 # Ignore all data contents
 data/input/*
 data/output/*
+models/bank_statement/*
+models/healthcare/*
+models/invoice/*
 
 # Explicityly include .gitkeep files to keep the directories in version control
 !data/input/.gitkeep
 !data/output/.gitkeep
+!models/bank_statement/.gitkeep
+!models/healthcare/.gitkeep
+!models/invoice/.gitkeep
 
 # Environment
 .env
+
+# Python related
+__pycache__/
+src/core/__pycache__/
