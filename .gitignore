@@ -25,5 +25,4 @@ models/invoice/*
 .env
 
 # Python related
-__pycache__/
 src/core/__pycache__/
