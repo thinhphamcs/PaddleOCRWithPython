@@ -11,6 +11,9 @@ inference/
 data/input/*
 data/output/*
 models/bank_statement/*
+!models/bank_statement/BoA
+models/bank_statement/BoA/*
+!models/bank_statement/BoA/.gitkeep
 models/healthcare/*
 models/invoice/*
 

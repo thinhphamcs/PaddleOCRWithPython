@@ -1,6 +1,10 @@
 import cv2
+import os
+import numpy as np
+from pathlib import Path
 from paddleocr import PaddleOCR
-from typing import List, Dict
+from pdf2image import convert_from_path
+from typing import List, Dict, Tuple
 
 
 class OCREngine:
@@ -77,3 +81,4 @@ class OCREngine:
         """
         data = self.extract_text(image_path)
         return '\n'.join([item['text'] for item in data])
+    

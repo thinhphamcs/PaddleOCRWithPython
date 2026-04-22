@@ -6,6 +6,10 @@ paddleocr==3.4.1
 
 # Common helper for image processing
 opencv-python
+Pillow
+
+# PDF to Image conversion
+pdf2image
 
 # Simple Python frontend/dashboard for OCR input/output display
 streamlit==1.30.0

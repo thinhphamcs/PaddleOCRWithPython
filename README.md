@@ -17,6 +17,7 @@ python src/main.py
 
 ## Features
 
+- **Multi-format support**: Process both images and PDF documents
 - **Multi-model support**: Load different models based on document type for better accuracy
 - **Professional architecture**: Clean separation between business logic and UI
 - **Streamlit interface**: Simple, intuitive web interface
@@ -34,3 +35,8 @@ python src/main.py
 - **Healthcare Forms**: Extract patient information, diagnoses, treatment codes
 - **Bank Statements**: Extract account numbers, transactions, balances
 - **General**: Works with any document
+
+## Supported File Formats
+
+- **Images**: JPG, JPEG, PNG, BMP, GIF
+- **Documents**: PDF (automatically converted to images and processed page-by-page)
