@@ -9,42 +9,40 @@ User Interface (Streamlit)
         ↓
     Business Logic (OCREngine)
         ↓
-    PaddleOCR Models
+    pytesseract Models
 ```
 
 ## Directory Structure
 
 ```
-PaddleOCRWithPython/
-├── .venv/                      # Python virtual environment
-├── LICENSE                     # Apache 2.0
-├── README.md                   # Project overview and quick start
-├── requirements.txt            # Python dependencies
-├── docs/                       # Documentation
-│   ├── GETTING_STARTED.md      # Detailed setup guide
-│   ├── ARCHITECTURE.md         # This file
-│   └── TRAINING.md             # Fine-tuning guide
-├── models/                     # Fine-tuned models for different document types
-│   ├── invoice/               # Invoice model
-│   ├── healthcare/            # Healthcare form model
-│   └── bank_statement/        # Bank statement model
+PytesseractWithPython/
+├── LICENSE                      # Apache 2.0
+├── README.md                    # Project overview and quick start
+├── requirements.txt             # Python dependencies
+├── docs/                        # Documentation
+│   ├── GETTING_STARTED.md       # Detailed setup guide
+│   ├── ARCHITECTURE.md          # Architecture file
+├── models/                      # Fine-tuned models for different document types
+│   ├── invoice/                 # Invoice model
+│   ├── healthcare/              # Healthcare form model
+│   └── bank_statement/          # Bank statement model
 ├── data/
-│   ├── input/                 # Images to scan
-│   └── output/                # Save results (JSON/TXT)
+│   ├── input/                   # Images to scan
+│   └── output/                  # Save results (JSON/TXT)
 └── src/
-    ├── main.py                # Entry point - launches Streamlit UI
-    ├── core/                  # Business logic layer
+    ├── main.py                  # Entry point - launches Streamlit UI
+    ├── core/                    # Business logic layer
     │   ├── __init__.py
-    │   └── ocr.py             # OCREngine class - PaddleOCR wrapper
-    └── ui/                    # Presentation layer
+    │   └── ocr.py               # OCREngine class - pytesseract wrapper
+    └── ui/                      # Presentation layer
         ├── __init__.py
-        └── app.py             # Streamlit web interface
+        └── app.py               # Streamlit web interface
 ```
 
 ### `src/core/`
 **Business Logic Layer**
 - `ocr.py` - OCREngine class that:
-  - Manages PaddleOCR initialization
+  - Manages pytesseract initialization
   - Supports multiple document types
   - Handles image processing
   - Returns structured OCR results
@@ -98,21 +96,9 @@ ocr = OCREngine(doc_type='invoice', lang='en')
    ↓
 3. OCREngine.extract_text_from_array()
    ↓
-4. PaddleOCR processes image
+4. pytesseract processes image
    ↓
 5. Results formatted by document type
    ↓
 6. Display in Streamlit UI
 ```
-
-## Extensibility
-
-To add a new document type:
-
-1. Create folder: `models/new_type/`
-2. Add `.gitkeep` file
-3. Update `TRAINING.md` with fine-tuning instructions
-4. Update UI dropdown in `src/ui/app.py`
-5. Add model weights when ready
-
-That's it! The engine automatically supports the new type.
