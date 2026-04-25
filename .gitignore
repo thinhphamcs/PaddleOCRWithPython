@@ -29,3 +29,4 @@ models/invoice/*
 
 # Python related
 src/core/__pycache__/
+src/ui/__pycache__/

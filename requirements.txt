@@ -1,15 +1,12 @@
 # Deep Learning Engine (CPU version for stability on Linux box)
-paddlepaddle==3.1.1
-
-# The OCR Library
-paddleocr==3.4.1
+pytesseract==0.3.10
 
 # Common helper for image processing
 opencv-python
-Pillow
+Pillow==10.0.0
 
 # PDF to Image conversion
-pdf2image
+pdf2image==1.17.0
 
 # Simple Python frontend/dashboard for OCR input/output display
 streamlit==1.30.0
