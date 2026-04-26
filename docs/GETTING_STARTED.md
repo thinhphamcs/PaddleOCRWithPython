@@ -28,6 +28,13 @@ python src/main.py
 
 The application will launch at `http://localhost:8501`
 
+## Tesseract requirement
+
+When the application run it will require system PATH to be install
+```bash
+sudo apt install tesseract-ocr
+```
+
 ## Usage
 
 1. **Select Document Type**: Choose from the dropdown menu:

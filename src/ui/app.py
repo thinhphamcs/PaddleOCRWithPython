@@ -1,5 +1,6 @@
 import sys
 from pathlib import Path
+import io
 import tempfile
 import streamlit as st
 from src.core.ocr import OCREngine
@@ -42,22 +43,21 @@ def format_ocr_results(results):
         return table
     return "\n".join(lines)
 
-def process_all_pages_in_pdf(pdf_path):
-    """Process all pages in a PDF and extract text using pytesseract."""
-    try:
-        images = convert_from_path(pdf_path, dpi=150)
-        if not images:
-            print(f"No images found for the document")
-            return None
-        ocr_results = []
-        for i, image in enumerate(images):
-            tif_image = Image.open(io.BytesIO(image.tobytes()))
-            text = pytesseract.image_to_string(tif_image, lang='eng')
-            ocr_results.append({'page_num': i + 1, 'text_items': [{'text': line.strip()} for line in text.split('\n') if line.strip()]})
-        return ocr_results
-    except Exception as e:
-        print(f"Error processing the document:{str(e)}")
-        raise 
+def process_all_pages_in_pdf(pdf_path):             
+      """Process all pages in a PDF and extract text using pytesseract."""                               
+      try:                                          
+          images = convert_from_path(pdf_path, dpi=150)                                            
+          if not images:                              
+              print(f"No images found for the document")                                          
+              return None                             
+          ocr_results = []                            
+          for i, image in enumerate(images):         
+              text = pytesseract.image_to_string(image, lang='eng')  
+              ocr_results.append({'page_num': i + 1,'text_items': [{'text': line.strip()} for line in text.split('\n') if line.strip()]})               
+          return ocr_results                          
+      except Exception as e:                          
+          print(f"Error processing the document:{str(e)}")                                 
+          raise 
 
 def main():
     """Main Streamlit application."""
