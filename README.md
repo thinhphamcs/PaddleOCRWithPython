@@ -38,5 +38,5 @@ python src/main.py
 
 ## Supported File Formats
 
-- **Images**: JPG, JPEG, PNG, BMP, GIF
+- **Images**: JPG, JPEG, PNG, PDF, TIFF
 - **Documents**: PDF (automatically converted to images and processed page-by-page)
