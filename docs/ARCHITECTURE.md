@@ -21,14 +21,19 @@ PytesseractWithPython/
 ├── requirements.txt             # Python dependencies
 ├── docs/                        # Documentation
 │   ├── GETTING_STARTED.md       # Detailed setup guide
-│   ├── ARCHITECTURE.md          # Architecture file
+│   ├── ARCHITECTURE.md          # Architecture guide
+│   ├── TRAINING_MODEL.md        # Training guide
 ├── models/                      # Fine-tuned models for different document types
 │   ├── invoice/                 # Invoice model
 │   ├── healthcare/              # Healthcare form model
 │   └── bank_statement/          # Bank statement model
+         ├── BoA                  # Fine tune for BoA
 ├── data/
 │   ├── input/                   # Images to scan
-│   └── output/                  # Save results (JSON/TXT)
+│   │    └── train               # Training model folder
+│   │         ├── images         # Training model images folder
+│   │         └── label          # Training model label              
+│   └── output/                  # Save results (.pt)
 └── src/
     ├── main.py                  # Entry point - launches Streamlit UI
     ├── core/                    # Business logic layer

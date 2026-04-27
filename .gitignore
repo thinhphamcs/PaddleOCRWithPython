@@ -5,8 +5,6 @@ inference/
 ~/.paddleocr/
 data/input/train/images/*
 data/input/train/labels/*
-!data/input/train/images
-!data/input/train/labels
 !data/input/train/images/.gitkeep
 !data/input/train/labels/.gitkeep
 data/input/data.yaml
