@@ -1,15 +1,18 @@
 import sys
 from pathlib import Path
 import io
+import os
 import tempfile
 import streamlit as st
 from src.core.ocr import OCREngine
 from pdf2image import convert_from_path
 from PIL import Image
 import pytesseract
+from ultralytics import YOLO
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
+model = YOLO("/home/guess/github_repos/PaddleOCRWithPython/data/output/bank_statement_ocr_v1.pt")
 
 def initialize_session():
     """Initialize Streamlit session state."""
@@ -65,7 +68,7 @@ def format_ocr_results(results):
 #     try:
 #         images = convert_from_path(pdf_path, dpi=150)
 #         if not images:
-#             print(f"No images found for the         document")
+#             print(f"No images found for the document")
 #             return None
 #         output_dir = Path("output_images")
 #         if not output_dir.exists():
@@ -89,10 +92,35 @@ def format_ocr_results(results):
 #             image.save(output_path, format="JPEG")
 #         return ocr_results
 #     except Exception as e:
-#         print(f"Error processing the                document:{str(e)}")
+#         print(f"Error processing the document:{str(e)}")
 #         raise
 
 
+# def process_all_pages_in_pdf(pdf_path):
+#     """Backup code"""
+#     try:
+#         images = convert_from_path(pdf_path, dpi=150)
+#         if not images:
+#             print(f"No images found for the document")
+#             return None
+#         ocr_results = []
+#         for i, image in enumerate(images):
+#             text = pytesseract.image_to_string(image, lang="eng")
+#             ocr_results.append(
+#                 {
+#                     "page_num": i + 1,
+#                     "text_items": [
+#                         {"text": line.strip()}
+#                         for line in text.split("\n")
+#                         if line.strip()
+#                     ],
+#                 }
+#             )
+#         return ocr_results
+#     except Exception as e:
+#         print(f"Error processing the document:{str(e)}")
+#         raise
+    
 def process_all_pages_in_pdf(pdf_path):
     """Process all pages in a PDF and extract text using pytesseract."""
     try:
@@ -102,15 +130,30 @@ def process_all_pages_in_pdf(pdf_path):
             return None
         ocr_results = []
         for i, image in enumerate(images):
-            text = pytesseract.image_to_string(image, lang="eng")
+            results = model.predict(image, conf=0.25, iou=0.4)
+            results[0].save(filename=f"test_page_{i+1}.jpg")
+            page_text_items = []
+            
+            if len(results[0].boxes) == 0:
+                page_text_items.append({"text": "No text detected"})
+            else:
+                for result in results:
+                    for box in result.boxes:
+                        
+                        class_id = int(box.cls[0])
+                        if class_id == 11 or class_id == 12:
+                            page_text_items.append({"text": "This page left intentionally blank."})
+                        else:
+                            coords = box.xyxy[0].tolist()
+                            cropped_image = image.crop((coords[0], coords[1], coords[2], coords[3]))
+                            text = pytesseract.image_to_string(cropped_image, lang="eng")
+                            for line in text.split("\n"):
+                                if line.strip():
+                                    page_text_items.append({"text": line.strip()})
             ocr_results.append(
                 {
                     "page_num": i + 1,
-                    "text_items": [
-                        {"text": line.strip()}
-                        for line in text.split("\n")
-                        if line.strip()
-                    ],
+                    "text_items": page_text_items
                 }
             )
         return ocr_results
@@ -153,7 +196,6 @@ def main():
                 st.session_state.pdf_pages = []
             try:
                 from pdf2image import pdfinfo_from_path
-
                 info = pdfinfo_from_path(tmp_path)
                 total_pages = min(info["Pages"], 10)
                 st.info(
