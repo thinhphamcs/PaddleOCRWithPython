@@ -1,5 +1,5 @@
-# PaddleOCR
-A professional, learning-focused repository for Optical Character Recognition (OCR) using PaddleOCR and Python.
+# Pytesseract
+A professional, learning-focused repository for Optical Character Recognition (OCR) using Pytesseract and Python.
 
 This project demonstrates real-world software architecture patterns with clean separation of concerns, modular design, and a production-ready Streamlit interface. It supports **multiple fine-tuned models** for different document types (invoices, healthcare forms, bank statements, etc.).
 
@@ -38,5 +38,5 @@ python src/main.py
 
 ## Supported File Formats
 
-- **Images**: JPG, JPEG, PNG, PDF, TIFF
+- **Images**: JPEG, PNG, PDF, TIFF
 - **Documents**: PDF (automatically converted to images and processed page-by-page)

@@ -33,9 +33,9 @@ Create a new file named data.yaml in the input/ folder.
 ```bash
 path: # Use your actual path
 train: train/images
-val: traim/images
+val: train/images
 
-nc: # Depending on how many labels you have, in my case 13
+nc: # Depending on how many labels you have, in my case 7
 names: ['name of your label', 'etc']
 ```
 
