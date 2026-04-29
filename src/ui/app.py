@@ -12,7 +12,9 @@ from ultralytics import YOLO
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-model = YOLO("/home/guess/github_repos/PaddleOCRWithPython/data/output/bank_statement_ocr_v1.pt")
+model = YOLO("/home/guess/github_repos/PaddleOCRWithPython/data/output/best.pt")
+
+print(model.names)
 
 def initialize_session():
     """Initialize Streamlit session state."""
@@ -130,19 +132,21 @@ def process_all_pages_in_pdf(pdf_path):
             return None
         ocr_results = []
         for i, image in enumerate(images):
-            results = model.predict(image, conf=0.25, iou=0.4)
-            results[0].save(filename=f"test_page_{i+1}.jpg")
+            results = model.predict(image, conf=0.30)
+            #results[0].save(filename=f"test_page_{i+1}.jpg")
             page_text_items = []
-            
             if len(results[0].boxes) == 0:
                 page_text_items.append({"text": "No text detected"})
             else:
                 for result in results:
                     for box in result.boxes:
-                        
                         class_id = int(box.cls[0])
-                        if class_id == 11 or class_id == 12:
+                        label = model.names[class_id]
+                        if label == "ignore":
+                            continue
+                        elif label == "Blank_Page":
                             page_text_items.append({"text": "This page left intentionally blank."})
+                            continue
                         else:
                             coords = box.xyxy[0].tolist()
                             cropped_image = image.crop((coords[0], coords[1], coords[2], coords[3]))

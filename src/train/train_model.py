@@ -6,13 +6,14 @@ def main():
 
     # Train the model
     model.train(
-        data="input/data.yaml", 
+        data="/home/guess/github_repos/PaddleOCRWithPython/data/input/data.yaml", 
         epochs=100, 
         imgsz=640, 
         device='cpu',
-        worker=2,
+        workers=2,
         batch=4, 
-        name="boa_ocr_model"
+        name="boa_ocr_model",
+        exist_ok=True
     )
 
 if __name__ == "__main__":
