@@ -12,9 +12,6 @@ sudo apt-get install libqt5gui5 libqt5core5a libqt5widgets5 libqt5dbus5
 
 In the python project
 ```bash
-pip install labelImg
-```
-```bash
 export QT_QPA_PLATFORM=xcb
 labelImg
 ```
@@ -33,9 +30,9 @@ Create a new file named data.yaml in the input/ folder.
 ```bash
 path: # Use your actual path
 train: train/images
-val: train/images
+val: val/images
 
-nc: # Depending on how many labels you have, in my case 7
+nc: # Depending on how many labels you have, in my case 6
 names: ['name of your label', 'etc']
 ```
 
@@ -48,3 +45,8 @@ python src/train/train_model.py
 ```
 
 Which will generated the .pt file, move the fil to data/output/
+
+Also new folder should be created and name as runs/detect/<name>/
+
+Go there and inside /weights/ copy the best.pt to data/output/ also
+

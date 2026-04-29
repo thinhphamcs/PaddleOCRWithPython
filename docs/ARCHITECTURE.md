@@ -30,15 +30,21 @@ PytesseractWithPython/
          ├── BoA                  # Fine tune for BoA
 ├── data/
 │   ├── input/                   # Images to scan
-│   │    └── train               # Training model folder
+│   │    ├── train               # Training model folder
+│   │    │    ├── images         # Training model images folder
+│   │    │    └── label          # Training model label   
+│   │    └── val                 # Training model folder
 │   │         ├── images         # Training model images folder
-│   │         └── label          # Training model label              
+│   │         └── label          # Training model label               
 │   └── output/                  # Save results (.pt)
 └── src/
     ├── main.py                  # Entry point - launches Streamlit UI
     ├── core/                    # Business logic layer
     │   ├── __init__.py
     │   └── ocr.py               # OCREngine class - pytesseract wrapper
+    ├── train/                   # Training layer
+    │   ├── __init__.py
+    │   └── train.py               # Streamlit web interface
     └── ui/                      # Presentation layer
         ├── __init__.py
         └── app.py               # Streamlit web interface

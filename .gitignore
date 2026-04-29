@@ -3,10 +3,16 @@ __pychache__/
 *.py[cod]
 inference/
 ~/.paddleocr/
+data/input/train/labels.cache
+data/input/val/labels.cache
 data/input/train/images/*
 data/input/train/labels/*
+data/input/val/images/*
+data/input/val/labels/*
 !data/input/train/images/.gitkeep
 !data/input/train/labels/.gitkeep
+!data/input/val/images/.gitkeep
+!data/input/val/labels/.gitkeep
 data/input/data.yaml
 data/output/*
 !data/input/.gitkeep
@@ -24,3 +30,4 @@ venv/
 src/core/__pycache__/
 src/ui/__pycache__/
 src/train/__pycache__/
+runs/*
