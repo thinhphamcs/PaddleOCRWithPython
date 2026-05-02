@@ -1,20 +1,24 @@
 from ultralytics import YOLO
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 def main():
-    # Load a model
-    model = YOLO("yolo11n.pt")  # load a pretrained model (recommended for training)
-
-    # Train the model
+    """Loading the data.yaml file and training the model."""
+    model = YOLO("yolo11n.pt")
     model.train(
-        data="/home/guess/github_repos/PaddleOCRWithPython/data/input/data.yaml", 
-        epochs=100, 
-        imgsz=640, 
-        device='cpu',
-        workers=2,
-        batch=4, 
-        name="boa_ocr_model",
-        exist_ok=True
+        data=os.getenv("MODEL_TRAIN_DATA"),
+        epochs=int(os.getenv("MODEL_TRAIN_EPOCHS")),
+        imgsz=int(os.getenv("MODEL_TRAIN_IMGSZ")),
+        device=os.getenv("MODEL_TRAIN_DEVICE"),
+        workers=int(os.getenv("MODEL_TRAIN_WORKERS")),
+        batch=int(os.getenv("MODEL_TRAIN_BATCH")),
+        name=os.getenv("MODEL_TRAIN_NAME"),
+        exist_ok=bool(os.getenv("MODEL_TRAIN_EXIST_OK")),
     )
+
 
 if __name__ == "__main__":
     main()

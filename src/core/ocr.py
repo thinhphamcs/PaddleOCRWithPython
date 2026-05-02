@@ -22,7 +22,7 @@ class OCREngine:
         for i in range(len(result["text"])):
             extracted_data.append(
                 {
-                    "text": result["text"][i],
+                    "t ext": result["text"][i],
                     "confidence": result["conf"][i] if i < len(result["conf"]) else 0.0,
                     "bounding_box": (
                         [
