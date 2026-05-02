@@ -25,10 +25,10 @@ canvas.py | line 526, line 530, and 531 | wraps the variables with int()
 
 After UI pop up a window, make sure to add the directory and before saving the label make sure switching to YOLO instead of PascalVOC because YOLO gives you .txt whereas PascalVOC gives you .xml
 
-Create a new file named data.yaml in the input/ folder.
+Create a new file named `data.yaml` in the `/data/input/` folder.
 
 ```bash
-path: # Use your actual path
+path: # .../data/input/
 train: train/images
 val: val/images
 
@@ -44,9 +44,9 @@ Run the training script
 python src/train/train_model.py
 ```
 
-Which will generated the .pt file, move the fil to data/output/
+Which will generated the .pt file, move the to `/data/output/`
 
-Also new folder should be created and name as runs/detect/<name>/
+Also new folder should be created and name as `runs/detect/<name>/`
 
-Go there and inside /weights/ copy the best.pt to data/output/ also
+Go there and inside `/weights/` folder copy the `best.pt` to `data/output/` also
 

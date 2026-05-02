@@ -19,6 +19,29 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
+### 4. Adding `.env` to home directory
+```bash
+# Environment variables for model training
+MODEL_TRAIN_DATA= #Path to data.yaml file
+MODEL_TRAIN_EPOCHS= #100 or higher
+MODEL_TRAIN_IMGSZ= #640 or higher
+MODEL_TRAIN_DEVICE= #cpu or gpu
+MODEL_TRAIN_WORKERS= #2 or more
+MODEL_TRAIN_BATCH= #4 or more
+MODEL_TRAIN_NAME= #Model Name
+MODEL_TRAIN_EXIST_OK= #True or False
+
+# Environment variable for model output path
+MODEL_OUTPUT_PATH= #Path to the output .pt file
+```
+
+### 5. Tesseract requirement
+
+The application will not run without the system PATH, so run the below command
+```bash
+sudo apt install tesseract-ocr
+```
+
 ## Running the Application
 
 Start the OCR web interface:
@@ -28,35 +51,14 @@ python src/main.py
 
 The application will launch at `http://localhost:8501`
 
-## Tesseract requirement
-
-When the application run it will require system PATH to be install
-```bash
-sudo apt install tesseract-ocr
-```
-
 ## Usage
 
-1. **Select Document Type**: Choose from the dropdown menu:
-   - `general` - Standard OCR for any document
-   - `invoice` - Optimized for invoices
-   - `healthcare` - Optimized for healthcare forms
-   - `bank_statement` - Optimized for bank statements
+1. More document types will be work on in the future:
+   - `general` - Future enhancement
+   - `invoice` - Future enhancement
+   - `healthcare` - Future enhancement
+   - `bank_statement` - Currently working on BoA
 
-2. **Upload Image**: Drag and drop or select an image file (JPG, PNG, BMP, GIF)
+2. **Upload Image**: Drag and drop or select an image file (JPG, PNG, PDF, TIF)
 
-3. **View Results**: The extracted text appears automatically on the right side
-
-## Supported Document Types
-
-- **Invoices**: Extract invoice numbers, dates, amounts, line items
-- **Healthcare Forms**: Extract patient information, diagnoses, treatment codes
-- **Bank Statements**: Extract account numbers, transactions, balances
-- **General**: Works with any document
-
-## Output
-
-The OCR results are displayed with:
-- Extracted text formatted by document type
-- Confidence scores for each line
-- Line count statistics
+3. **View Results**: The extracted text appears automatically

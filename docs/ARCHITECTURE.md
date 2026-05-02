@@ -27,15 +27,15 @@ PytesseractWithPython/
 │   ├── invoice/                 # Invoice model
 │   ├── healthcare/              # Healthcare form model
 │   └── bank_statement/          # Bank statement model
-         ├── BoA                  # Fine tune for BoA
-├── data/
-│   ├── input/                   # Images to scan
+         ├── BoA                 # Fine tune for BoA
+├── data/                        # Data folder for the model
+│   ├── input/                   # Where to place the actual images
 │   │    ├── train               # Training model folder
-│   │    │    ├── images         # Training model images folder
+│   │    │    ├── images         # Training model images
 │   │    │    └── label          # Training model label   
-│   │    └── val                 # Training model folder
-│   │         ├── images         # Training model images folder
-│   │         └── label          # Training model label               
+│   │    └── val                 # Validation model folder
+│   │         ├── images         # Validation model images
+│   │         └── label          # Validation model label               
 │   └── output/                  # Save results (.pt)
 └── src/
     ├── main.py                  # Entry point - launches Streamlit UI
@@ -44,7 +44,7 @@ PytesseractWithPython/
     │   └── ocr.py               # OCREngine class - pytesseract wrapper
     ├── train/                   # Training layer
     │   ├── __init__.py
-    │   └── train.py               # Streamlit web interface
+    │   └── train.py             # Training model to fine tune each documentaion type
     └── ui/                      # Presentation layer
         ├── __init__.py
         └── app.py               # Streamlit web interface

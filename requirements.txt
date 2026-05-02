@@ -9,3 +9,4 @@ streamlit==1.30.0
 labelImg==1.8.6
 pyqt5==5.15.10
 setuptools==82.0.1
+python-dotenv==1.2.2
