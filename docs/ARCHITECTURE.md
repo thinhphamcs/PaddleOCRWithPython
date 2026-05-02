@@ -27,7 +27,7 @@ PytesseractWithPython/
 │   ├── invoice/                 # Invoice model
 │   ├── healthcare/              # Healthcare form model
 │   └── bank_statement/          # Bank statement model
-         ├── BoA                 # Fine tune for BoA
+|        ├── BoA                 # Fine tune for BoA
 ├── data/                        # Data folder for the model
 │   ├── input/                   # Where to place the actual images
 │   │    ├── train               # Training model folder
